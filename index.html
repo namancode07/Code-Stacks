@@ -77,32 +77,10 @@
             text-decoration: none;
         }
 
-        .logo-icon {
-            background: var(--gradient);
-            width: 45px;
-            height: 45px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.7rem;
-            font-weight: 700;
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: white;
-            letter-spacing: -0.5px;
-        }
-
-        .logo-text span {
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+        /* Customizable Logo - Replace the URL with your own logo */
+        .logo-img {
+            height: 50px; /* Adjust as needed */
+            width: auto;
         }
 
         .nav-links {
@@ -137,6 +115,14 @@
         }
 
         .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--accent);
+        }
+
+        .nav-links a.active::after {
             width: 100%;
         }
 
@@ -190,9 +176,46 @@
             color: white;
         }
 
+        /* Fixed Get Started Button Animation */
+        .btn-get-started {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            background: var(--gradient-accent);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: pulse 2s infinite;
+        }
+
+        .btn-get-started::before {
+            background: var(--gradient);
+        }
+
+        .btn-get-started:hover {
+            /* animation: none; */
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0); }
+        }
+
+        /* Page Content */
+        .page-content {
+            display: none;
+            animation: fadeIn 0.8s forwards;
+            padding-top: 8rem;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        /* Home Page */
         /* Hero Section */
         .hero {
-            padding: 12rem 0 8rem;
+            padding: 8rem 0 5rem;
             position: relative;
             overflow: hidden;
             color: white;
@@ -394,7 +417,7 @@
             gap: 1rem;
         }
 
-        /* Portfolio Section */
+        /* Portfolio Section on Home */
         .portfolio {
             background: rgba(15, 23, 42, 0.4);
             backdrop-filter: blur(10px);
@@ -630,6 +653,428 @@
             resize: vertical;
         }
 
+        /* Portfolio Page */
+        .portfolio-hero {
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .portfolio-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #bae6fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .portfolio-hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-section {
+            padding: 6rem 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .portfolio-grid-page {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .portfolio-item-page {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .portfolio-img-container {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .portfolio-img-page {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.85);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .portfolio-item-page:hover .portfolio-overlay-page {
+            opacity: 1;
+        }
+
+        .portfolio-item-page:hover .portfolio-img-page {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        .portfolio-title-page {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-category-page {
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .portfolio-desc {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(6, 182, 212, 0.15);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+
+        /* About Us Page */
+        .about-hero {
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #bae6fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .about-section {
+            padding: 6rem 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .team-member {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            margin: 0 auto 1.5rem;
+        }
+
+        .team-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .team-role {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .team-social a {
+            color: var(--gray);
+            transition: var(--transition);
+        }
+
+        .team-social a:hover {
+            color: var(--accent);
+        }
+
+        /* Services Page */
+        .services-hero {
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #ffffff, #bae6fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .services-hero p {
+            font-size: 1.4rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+        }
+
+        .services-section {
+            padding: 6rem 0;
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        /* Project Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 20, 41, 0.95);
+            z-index: 2000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+
+        .close-modal:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .modal-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .modal-category {
+            color: var(--accent);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .modal-desc {
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .modal-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .detail-item h4 {
+            color: white;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .detail-item p {
+            color: var(--gray);
+        }
+
+        .modal-tech {
+            margin-bottom: 2rem;
+        }
+
+        .modal-tech h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .tech-item {
+            background: rgba(37, 99, 235, 0.15);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+
+        .modal-footer {
+            padding: 2rem;
+            border-top: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         /* Footer */
         footer {
             background: #060c18;
@@ -758,8 +1203,8 @@
 
         /* Responsive */
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
+            .hero h1, .portfolio-hero h1, .about-hero h1, .services-hero h1 {
+                font-size: 3.5rem;
             }
             
             .section-title {
@@ -768,15 +1213,15 @@
         }
 
         @media (max-width: 768px) {
-            .hero {
-                padding: 10rem 0 5rem;
+            .hero, .portfolio-hero, .about-hero, .services-hero {
+                padding: 12rem 0 5rem;
             }
             
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero h1, .portfolio-hero h1, .about-hero h1, .services-hero h1 {
+                font-size: 2.8rem;
             }
             
-            .hero p {
+            .hero p, .portfolio-hero p, .about-hero p, .services-hero p {
                 font-size: 1.15rem;
             }
             
@@ -790,7 +1235,7 @@
                 text-align: center;
             }
             
-            .stats {
+            .stats, .portfolio-stats {
                 flex-direction: column;
                 gap: 1.5rem;
             }
@@ -806,275 +1251,788 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header with Customizable Logo -->
     <header>
         <div class="container">
             <nav class="navbar">
-                <a href="#home" class="logo">
-                    <div class="logo-icon">CS</div>
-                    <div class="logo-text">Code <span>Stacks</span></div>
+                <a href="#" class="logo" id="home-link">
+                    <!-- Replace this URL with your own logo -->
+                    <img src="cs_logo.png" alt="Code Stacks Logo" class="logo-img">
                 </a>
                 <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#services">Services</a>
-                    <a href="#portfolio">Portfolio</a>
-                    <a href="#testimonials">Testimonials</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#contact" class="btn">Get Started</a>
+                    <a href="#" class="nav-link active" data-page="home">Home</a>
+                    <a href="#" class="nav-link" data-page="services">Services</a>
+                    <a href="#" class="nav-link" data-page="portfolio">Portfolio</a>
+                    <a href="#" class="nav-link" data-page="about">About Us</a>
+                    <a href="#" class="nav-link" data-page="contact">Contact</a>
+                    <a href="#" class="btn btn-get-started">Get Started</a>
                 </div>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-        </div>
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Transform Ideas Into Powerful Digital Experiences</h1>
-                <p class="fade-in delay-1">Code Stacks builds innovative mobile and web applications that drive growth and engage users. We turn your vision into reality with cutting-edge technology and creative solutions.</p>
-                <div class="hero-btns">
-                    <a href="#portfolio" class="btn fade-in delay-2">View Our Work</a>
-                    <a href="#contact" class="btn btn-outline fade-in delay-3">Get In Touch</a>
+    <!-- Home Page Content -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+            <div class="container">
+                <div class="hero-content">
+                    <h1 class="fade-in">Transform Ideas Into Powerful Digital Experiences</h1>
+                    <p class="fade-in delay-1">Code Stacks builds innovative mobile and web applications that drive growth and engage users. We turn your vision into reality with cutting-edge technology and creative solutions.</p>
+                    <div class="hero-btns">
+                        <a href="#" class="btn fade-in delay-2" id="view-portfolio">View Our Work</a>
+                        <a href="#" class="btn btn-get-started fade-in delay-3">Get Started</a>
+                    </div>
+                    <div class="stats">
+                        <div class="stat-item fade-in delay-3">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-text">Projects Completed</div>
+                        </div>
+                        <div class="stat-item fade-in delay-4">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-text">Client Satisfaction</div>
+                        </div>
+                        <div class="stat-item fade-in delay-5">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-text">Expert Team</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="stats">
-                    <div class="stat-item fade-in delay-3">
+            </div>
+        </section>
+
+        <!-- Services Section on Home -->
+        <section class="section" id="services-home">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Our Services</h2>
+                    <p class="section-subtitle fade-in delay-1">We provide end-to-end app development services to help your business thrive in the digital world.</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Mobile App Development</h3>
+                            <p class="service-desc">Native and cross-platform mobile apps for iOS and Android with stunning UI/UX design.</p>
+                            <a href="#" class="service-link" data-page="services">
+                                Learn more <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in delay-1">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Web Development</h3>
+                            <p class="service-desc">Responsive websites and web applications built with modern frameworks and technologies.</p>
+                            <a href="#" class="service-link" data-page="services">
+                                Learn more <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in delay-2">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">UI/UX Design</h3>
+                            <p class="service-desc">User-centered designs that enhance engagement and deliver exceptional experiences.</p>
+                            <a href="#" class="service-link" data-page="services">
+                                Learn more <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section on Home -->
+        <section class="section portfolio" id="portfolio-home">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Featured Projects</h2>
+                    <p class="section-subtitle fade-in delay-1">Explore some of our recent projects and see how we've helped businesses succeed.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item fade-in">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finance App" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Finance Tracker App</h3>
+                            <p class="portfolio-category">Mobile App</p>
+                            <a href="#" class="btn portfolio-btn">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in delay-1">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Fashion E-Commerce Platform</h3>
+                            <p class="portfolio-category">Web App</p>
+                            <a href="#" class="btn portfolio-btn">View Project</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item fade-in delay-2">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fitness App" class="portfolio-img">
+                        <div class="portfolio-overlay">
+                            <h3 class="portfolio-title">Fitness Challenge App</h3>
+                            <p class="portfolio-category">Mobile App</p>
+                            <a href="#" class="btn portfolio-btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="#" class="btn" id="view-full-portfolio">View Full Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section" id="testimonials">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Client Testimonials</h2>
+                    <p class="section-subtitle fade-in delay-1">Hear what our clients have to say about working with us.</p>
+                </div>
+                <div class="testimonials-container">
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-content">
+                            "Code Stacks transformed our business with a custom mobile app that perfectly captures our brand identity. Their team was professional, responsive, and delivered beyond our expectations. The app has already increased our user engagement by 45%."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Sarah Johnson</h4>
+                                <p class="author-role">CEO, TechInnovate</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in delay-1">
+                        <div class="testimonial-content">
+                            "We partnered with Code Stacks for our e-commerce platform redesign. Their attention to detail and understanding of our business needs was impressive. The new platform has reduced bounce rates and increased conversions significantly."
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Michael Chen</h4>
+                                <p class="author-role">Director, StyleHub</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section contact" id="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Get In Touch</h2>
+                    <p class="section-subtitle fade-in delay-1">Ready to start your project? Contact us today for a free consultation.</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-method fade-in">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Kurukshetra, Haryana, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-1">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>+91 9817619058</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-2">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>namansaini953@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Working Hours</h3>
+                                <p>Mon-Fri: 9AM - 6PM</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form fade-in delay-4">
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Your Name" required name="name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Your Email" required name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Subject" name="subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-input" placeholder="Your Message" required name="message"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page Content -->
+    <div id="services-page" class="page-content">
+        <section class="services-hero">
+            <div class="container">
+                <h1 class="fade-in">Our Services</h1>
+                <p class="fade-in delay-1">Discover our comprehensive app development solutions designed to transform your digital presence.</p>
+            </div>
+        </section>
+
+        <section class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Expert App Development Services</h2>
+                    <p class="section-subtitle fade-in delay-1">We provide end-to-end solutions to bring your digital vision to life</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-mobile-alt floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Mobile App Development</h3>
+                            <p class="service-desc">Native and cross-platform mobile apps for iOS and Android with stunning UI/UX design.</p>
+                            <ul style="color: var(--gray); margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                                <li>iOS & Android Native Development</li>
+                                <li>React Native & Flutter Apps</li>
+                                <li>Progressive Web Apps (PWAs)</li>
+                                <li>App Maintenance & Support</li>
+                            </ul>
+                            <a href="#" class="btn">Start Your Project</a>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in delay-1">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">Web Development</h3>
+                            <p class="service-desc">Responsive websites and web applications built with modern frameworks and technologies.</p>
+                            <ul style="color: var(--gray); margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                                <li>Custom Web Applications</li>
+                                <li>E-Commerce Solutions</li>
+                                <li>Content Management Systems</li>
+                                <li>API Development & Integration</li>
+                            </ul>
+                            <a href="#" class="btn">Start Your Project</a>
+                        </div>
+                    </div>
+                    <div class="service-card fade-in delay-2">
+                        <div class="service-icon">
+                            <i class="fas fa-paint-brush floating"></i>
+                        </div>
+                        <div class="service-content">
+                            <h3 class="service-title">UI/UX Design</h3>
+                            <p class="service-desc">User-centered designs that enhance engagement and deliver exceptional experiences.</p>
+                            <ul style="color: var(--gray); margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                                <li>User Interface Design</li>
+                                <li>User Experience Research</li>
+                                <li>Interactive Prototyping</li>
+                                <li>Usability Testing</li>
+                            </ul>
+                            <a href="#" class="btn">Start Your Project</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section" style="padding-top: 0;">
+                    <div class="section-header">
+                        <h2 class="section-title fade-in delay-3">Our Development Process</h2>
+                        <p class="section-subtitle fade-in delay-4">A structured approach to deliver exceptional results</p>
+                    </div>
+                    <div class="services-grid">
+                        <div class="service-card fade-in delay-3">
+                            <div class="service-icon" style="background: rgba(37, 99, 235, 0.2);">
+                                <i class="fas fa-lightbulb" style="color: #3b82f6;"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-title">Discovery & Planning</h3>
+                                <p class="service-desc">We begin by understanding your vision, goals, and requirements to create a comprehensive project plan.</p>
+                            </div>
+                        </div>
+                        <div class="service-card fade-in delay-4">
+                            <div class="service-icon" style="background: rgba(139, 92, 246, 0.2);">
+                                <i class="fas fa-drafting-compass" style="color: #8b5cf6;"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-title">Design & Prototyping</h3>
+                                <p class="service-desc">Our designers create intuitive user interfaces and interactive prototypes for your approval.</p>
+                            </div>
+                        </div>
+                        <div class="service-card fade-in delay-5">
+                            <div class="service-icon" style="background: rgba(6, 182, 212, 0.2);">
+                                <i class="fas fa-code" style="color: #06b6d4;"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-title">Development</h3>
+                                <p class="service-desc">Our developers build your solution using the latest technologies and best practices.</p>
+                            </div>
+                        </div>
+                        <div class="service-card fade-in">
+                            <div class="service-icon" style="background: rgba(16, 185, 129, 0.2);">
+                                <i class="fas fa-rocket" style="color: #10b981;"></i>
+                            </div>
+                            <div class="service-content">
+                                <h3 class="service-title">Testing & Launch</h3>
+                                <p class="service-desc">We rigorously test your solution and deploy it to production with continuous support.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Portfolio Page Content -->
+    <div id="portfolio-page" class="page-content">
+        <section class="portfolio-hero">
+            <div class="container">
+                <h1 class="fade-in">Our Portfolio</h1>
+                <p class="fade-in delay-1">Explore our innovative app development projects that transform ideas into powerful digital experiences. Each project showcases our expertise and commitment to excellence.</p>
+                <div class="portfolio-stats">
+                    <div class="stat-item fade-in delay-2">
                         <div class="stat-number">150+</div>
                         <div class="stat-text">Projects Completed</div>
                     </div>
-                    <div class="stat-item fade-in delay-4">
+                    <div class="stat-item fade-in delay-3">
                         <div class="stat-number">98%</div>
                         <div class="stat-text">Client Satisfaction</div>
                     </div>
-                    <div class="stat-item fade-in delay-5">
+                    <div class="stat-item fade-in delay-4">
                         <div class="stat-number">50+</div>
                         <div class="stat-text">Expert Team</div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Our Services</h2>
-                <p class="section-subtitle fade-in delay-1">We provide end-to-end app development services to help your business thrive in the digital world.</p>
+        <section class="portfolio-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title fade-in">Featured Projects</h2>
+                    <p class="section-subtitle fade-in delay-1">Discover how we've helped businesses succeed with our cutting-edge app development solutions.</p>
+                </div>
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+                    <button class="filter-btn" data-filter="web">Web Apps</button>
+                    <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
+                    <button class="filter-btn" data-filter="design">UI/UX Design</button>
+                </div>
+                <div class="portfolio-grid-page">
+                    <div class="portfolio-item-page fade-in" data-category="mobile">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finance App" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="1">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Finance Tracker App</h3>
+                            <span class="portfolio-category-page">Mobile App</span>
+                            <p class="portfolio-desc">A comprehensive finance tracking application for iOS and Android that helps users manage their expenses and investments.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">React Native</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">Redux</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="1">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item-page fade-in delay-1" data-category="web">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="2">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Fashion E-Commerce Platform</h3>
+                            <span class="portfolio-category-page">Web App</span>
+                            <p class="portfolio-desc">A complete e-commerce solution for a fashion retailer with advanced filtering, cart, and payment integration.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">React</span>
+                                <span class="tag">Node.js</span>
+                                <span class="tag">MongoDB</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="2">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item-page fade-in delay-2" data-category="mobile">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fitness App" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="3">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Fitness Challenge App</h3>
+                            <span class="portfolio-category-page">Mobile App</span>
+                            <p class="portfolio-desc">A gamified fitness application with workout tracking, challenges, and social sharing capabilities.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Flutter</span>
+                                <span class="tag">Firebase</span>
+                                <span class="tag">Health API</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="3">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item-page fade-in delay-3" data-category="ecommerce">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="4">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Electronics Store</h3>
+                            <span class="portfolio-category-page">E-Commerce</span>
+                            <p class="portfolio-desc">An online electronics marketplace with product comparisons, reviews, and secure checkout.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Vue.js</span>
+                                <span class="tag">Express</span>
+                                <span class="tag">Stripe</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="4">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item-page fade-in delay-4" data-category="design">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI/UX Design" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="5">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Banking App UI</h3>
+                            <span class="portfolio-category-page">UI/UX Design</span>
+                            <p class="portfolio-desc">Modern banking interface design focused on usability, security, and seamless transaction flows.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Figma</span>
+                                <span class="tag">UI Design</span>
+                                <span class="tag">UX Research</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="5">View Details</a>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-item-page fade-in delay-5" data-category="web">
+                        <div class="portfolio-img-container">
+                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web App" class="portfolio-img-page">
+                            <div class="portfolio-overlay-page">
+                                <a href="#" class="btn view-project" data-id="6">View Project</a>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <h3 class="portfolio-title-page">Project Management Dashboard</h3>
+                            <span class="portfolio-category-page">Web App</span>
+                            <p class="portfolio-desc">A comprehensive project management solution with task tracking, team collaboration, and reporting.</p>
+                            <div class="portfolio-tags">
+                                <span class="tag">Angular</span>
+                                <span class="tag">NestJS</span>
+                                <span class="tag">PostgreSQL</span>
+                            </div>
+                            <a href="#" class="btn btn-outline view-project" data-id="6">View Details</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt floating"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Mobile App Development</h3>
-                        <p class="service-desc">Native and cross-platform mobile apps for iOS and Android with stunning UI/UX design.</p>
-                        <a href="#contact" class="service-link">
-                            Get started <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card fade-in delay-1">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code floating"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Web Development</h3>
-                        <p class="service-desc">Responsive websites and web applications built with modern frameworks and technologies.</p>
-                        <a href="#contact" class="service-link">
-                            Get started <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="service-card fade-in delay-2">
-                    <div class="service-icon">
-                        <i class="fas fa-paint-brush floating"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">UI/UX Design</h3>
-                        <p class="service-desc">User-centered designs that enhance engagement and deliver exceptional experiences.</p>
-                        <a href="#contact" class="service-link">
-                            Get started <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    </div>
 
-    <!-- Portfolio Section -->
-    <section class="section portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Our Portfolio</h2>
-                <p class="section-subtitle fade-in delay-1">Explore our recent projects and see how we've helped businesses succeed.</p>
+    <!-- About Us Page -->
+    <div id="about-page" class="page-content">
+        <section class="about-hero">
+            <div class="container">
+                <h1 class="fade-in">About Us</h1>
+                <p class="fade-in delay-1">Learn about our journey, values, and the team behind Code Stacks.</p>
             </div>
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
-                <button class="filter-btn" data-filter="web">Web Apps</button>
-                <button class="filter-btn" data-filter="ecommerce">E-Commerce</button>
-                <button class="filter-btn" data-filter="design">UI/UX Design</button>
-            </div>
-            <div class="portfolio-grid">
-                <div class="portfolio-item fade-in" data-category="mobile">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finance App" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Finance Tracker App</h3>
-                        <p class="portfolio-category">Mobile App</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in delay-1" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Fashion E-Commerce Platform</h3>
-                        <p class="portfolio-category">Web App</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in delay-2" data-category="mobile">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Fitness App" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Fitness Challenge App</h3>
-                        <p class="portfolio-category">Mobile App</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in delay-3" data-category="ecommerce">
-                    <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-Commerce" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Electronics Store</h3>
-                        <p class="portfolio-category">E-Commerce</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in delay-4" data-category="design">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="UI/UX Design" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Banking App UI</h3>
-                        <p class="portfolio-category">UI/UX Design</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-                <div class="portfolio-item fade-in delay-5" data-category="web">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Web App" class="portfolio-img">
-                    <div class="portfolio-overlay">
-                        <h3 class="portfolio-title">Project Management Dashboard</h3>
-                        <p class="portfolio-category">Web App</p>
-                        <a href="#" class="btn portfolio-btn">View Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials -->
-    <section class="section" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Client Testimonials</h2>
-                <p class="section-subtitle fade-in delay-1">Hear what our clients have to say about working with us.</p>
-            </div>
-            <div class="testimonials-container">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-content">
-                        "Code Stacks transformed our business with a custom mobile app that perfectly captures our brand identity. Their team was professional, responsive, and delivered beyond our expectations. The app has already increased our user engagement by 45%."
+        <section class="about-section">
+            <div class="container">
+                <div class="about-content fade-in">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Our Office">
                     </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sarah Johnson" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Sarah Johnson</h4>
-                            <p class="author-role">CEO, TechInnovate</p>
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>Founded in 2018, Code Stacks began with a simple mission: to create exceptional digital experiences that solve real business problems. What started as a small team of passionate developers has grown into a full-service app development agency serving clients worldwide.</p>
+                        <p>We believe in the power of technology to transform businesses and improve lives. Our team combines technical expertise with creative thinking to deliver solutions that exceed expectations.</p>
+                        <div class="stats" style="margin-top: 2rem;">
+                            <div class="stat-item">
+                                <div class="stat-number">5+</div>
+                                <div class="stat-text">Years Experience</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">50+</div>
+                                <div class="stat-text">Team Members</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-number">150+</div>
+                                <div class="stat-text">Projects Delivered</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card fade-in delay-1">
-                    <div class="testimonial-content">
-                        "We partnered with Code Stacks for our e-commerce platform redesign. Their attention to detail and understanding of our business needs was impressive. The new platform has reduced bounce rates and increased conversions significantly."
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
-                        <div class="author-info">
-                            <h4>Michael Chen</h4>
-                            <p class="author-role">Director, StyleHub</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="section contact" id="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title fade-in">Get In Touch</h2>
-                <p class="section-subtitle fade-in delay-1">Ready to start your project? Contact us today for a free consultation.</p>
-            </div>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <div class="contact-method fade-in">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                <div class="section-header" style="margin: 5rem 0 3rem;">
+                    <h2 class="section-title fade-in delay-1">Our Values</h2>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card fade-in delay-1">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Location</h3>
-                            <p>Kurukshetra, Haryana, </p>
+                        <div class="service-content">
+                            <h3 class="service-title">Innovation</h3>
+                            <p class="service-desc">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
                         </div>
                     </div>
-                    <div class="contact-method fade-in delay-1">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone-alt"></i>
+                    <div class="service-card fade-in delay-2">
+                        <div class="service-icon">
+                            <i class="fas fa-handshake"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Phone</h3>
-                            <p>9817619058</p>
-                        </div>
-                    </div>
-                    <div class="contact-method fade-in delay-2">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h3>Email</h3>
-                            <p>namansaini953@gmai.com</p>
+                        <div class="service-content">
+                            <h3 class="service-title">Integrity</h3>
+                            <p class="service-desc">We build trust through transparency, honesty, and ethical business practices.</p>
                         </div>
                     </div>
-                    <div class="contact-method fade-in delay-3">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                    <div class="service-card fade-in delay-3">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
                         </div>
-                        <div class="contact-details">
-                            <h3>Working Hours</h3>
-                            <p>Mon-Fri: 9AM - 6PM</p>
+                        <div class="service-content">
+                            <h3 class="service-title">Collaboration</h3>
+                            <p class="service-desc">We work closely with our clients to ensure their vision becomes reality.</p>
                         </div>
                     </div>
                 </div>
-                <div class="contact-form fade-in delay-4">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Your Name" required>
+
+                <div class="section-header" style="margin: 5rem 0 3rem;">
+                    <h2 class="section-title fade-in delay-2">Meet Our Team</h2>
+                    <p class="section-subtitle fade-in delay-3">The talented individuals behind our success</p>
+                </div>
+
+                <div class="team-grid">
+                    <div class="team-member fade-in delay-3">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Team Member" class="team-avatar">
+                        <h3 class="team-name">Naman Saini</h3>
+                        <p class="team-role">Founder & CEO</p>
+                        <p>With 10+ years in software development, Naman leads our strategic vision.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
                         </div>
-                        <div class="form-group">
-                            <input type="email" class="form-input" placeholder="Your Email" required>
+                    </div>
+                    <div class="team-member fade-in delay-4">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Team Member" class="team-avatar">
+                        <h3 class="team-name">Priya Sharma</h3>
+                        <p class="team-role">Lead Developer</p>
+                        <p>Full-stack developer with expertise in React, Node.js, and cloud architecture.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
                         </div>
-                        <div class="form-group">
-                            <input type="text" class="form-input" placeholder="Subject">
+                    </div>
+                    <div class="team-member fade-in delay-5">
+                        <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Team Member" class="team-avatar">
+                        <h3 class="team-name">Rahul Verma</h3>
+                        <p class="team-role">UX/UI Designer</p>
+                        <p>Creates intuitive, beautiful interfaces that users love to interact with.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>
                         </div>
-                        <div class="form-group">
-                            <textarea class="form-input" placeholder="Your Message" required></textarea>
+                    </div>
+                    <div class="team-member fade-in">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Team Member" class="team-avatar">
+                        <h3 class="team-name">Anjali Patel</h3>
+                        <p class="team-role">Project Manager</p>
+                        <p>Ensures projects are delivered on time, within budget, and exceed expectations.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
                         </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact-page" class="page-content">
+        <section class="portfolio-hero">
+            <div class="container">
+                <h1 class="fade-in">Contact Us</h1>
+                <p class="fade-in delay-1">Have a project in mind? Get in touch with us today!</p>
+            </div>
+        </section>
+
+        <section class="section contact">
+            <div class="container">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="fade-in">
+                            <h2 class="section-title" style="text-align: left; margin-bottom: 2rem;">Get In Touch</h2>
+                        </div>
+                        <div class="contact-method fade-in delay-1">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Kurukshetra, Haryana, India</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-2">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Phone</h3>
+                                <p>+91 9817619058</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-3">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <p>namansaini953@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method fade-in delay-4">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Working Hours</h3>
+                                <p>Mon-Fri: 9AM - 6PM</p>
+                            </div>
+                        </div>
+                        <div class="fade-in delay-5" style="margin-top: 2rem;">
+                            <h3>Follow Us</h3>
+                            <div class="social-links">
+                                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="#" class="social-link"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon Added -->
+                                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form fade-in delay-1">
+                        <h2 class="section-title" style="margin-bottom: 2rem;">Send Us a Message</h2>
+                        <form id="contactFormPage">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Your Name" required name="name">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Your Email" required name="email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Subject" name="subject">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-input" placeholder="Your Message" required name="message"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Project Modals -->
+    <div class="modal" id="project-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Project Details</h3>
+                <div class="close-modal">&times;</div>
+            </div>
+            <div class="modal-body">
+                <img src="" alt="Project Image" class="modal-img" id="modal-img">
+                <h2 class="modal-title" id="modal-title">Project Title</h2>
+                <span class="modal-category" id="modal-category">Category</span>
+                <p class="modal-desc" id="modal-desc">Project description goes here...</p>
+                
+                <div class="modal-details">
+                    <div class="detail-item">
+                        <h4>Client</h4>
+                        <p id="modal-client">Client Name</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Timeline</h4>
+                        <p id="modal-timeline">3 months</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Project Type</h4>
+                        <p id="modal-type">Mobile App</p>
+                    </div>
+                    <div class="detail-item">
+                        <h4>Status</h4>
+                        <p id="modal-status">Completed</p>
+                    </div>
+                </div>
+                
+                <div class="modal-tech">
+                    <h3>Technologies Used</h3>
+                    <div class="tech-list" id="tech-list">
+                        <!-- Tech tags will be inserted here -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div>
+                    <a href="#" class="btn" id="live-demo">Live Demo</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-share-alt"></i></a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -1082,7 +2040,8 @@
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <div class="footer-logo-text">Code <span>Stacks</span></div>
+                        <div><img src="cs_logo.png" alt="Code Stacks Logo" class="logo-img">
+</div>
                     </div>
                     <p class="footer-about">Transforming ideas into powerful digital experiences through innovative app development solutions. We help businesses thrive in the digital world.</p>
                     <div class="social-links">
@@ -1090,17 +2049,18 @@
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a> <!-- YouTube Icon Added -->
                         <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
                     </div>
                 </div>
                 <div>
                     <h3 class="footer-title">Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Services</a></li>
-                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
-                        <li><a href="#testimonials"><i class="fas fa-chevron-right"></i> Testimonials</a></li>
-                        <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="services"><i class="fas fa-chevron-right"></i> Services</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="portfolio"><i class="fas fa-chevron-right"></i> Portfolio</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
                     </ul>
                 </div>
                 <div>
@@ -1121,9 +2081,70 @@
     </footer>
 
     <script>
+        // Page Navigation System
+        const navLinks = document.querySelectorAll('.nav-link, .footer-nav-link, .service-link');
+        const pages = document.querySelectorAll('.page-content');
+        const homeLink = document.getElementById('home-link');
+        
+        // Function to show a specific page
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show the requested page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize page navigation
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+                if(page) {
+                    showPage(`${page}-page`);
+                }
+            });
+        });
+        
+        // Home logo link
+        homeLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('home-page');
+        });
+        
+        // Portfolio links
+        document.getElementById('view-portfolio').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('portfolio-page');
+        });
+        
+        document.getElementById('view-full-portfolio').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('portfolio-page');
+        });
+        
+        // Get Started button
+        document.querySelector('.btn-get-started').addEventListener('click', (e) => {
+            e.preventDefault();
+            showPage('contact-page');
+        });
+        
         // Portfolio Filtering
         const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        const portfolioItems = document.querySelectorAll('.portfolio-item-page');
         
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1137,6 +2158,8 @@
                 portfolioItems.forEach(item => {
                     if (filter === 'all' || item.dataset.category === filter) {
                         item.style.display = 'block';
+                        // Add animation when showing
+                        item.classList.add('fade-in');
                     } else {
                         item.style.display = 'none';
                     }
@@ -1144,47 +2167,143 @@
             });
         });
 
-        // Form Submission
-        const contactForm = document.getElementById('contactForm');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Get form values
-            const name = contactForm.querySelector('input[type="text"]').value;
-            const email = contactForm.querySelector('input[type="email"]').value;
-            
-            // Show success message
-            const successMessage = document.createElement('div');
-            successMessage.innerHTML = `
-                <div style="background: rgba(6, 182, 212, 0.2); border: 1px solid #06b6d4; padding: 1rem; border-radius: 10px; margin-top: 1rem; display: flex; align-items: center; gap: 1rem;">
-                    <i class="fas fa-check-circle" style="color: #06b6d4; font-size: 1.5rem;"></i>
-                    <div>
-                        <h3 style="color: white; margin-bottom: 0.25rem;">Thank you, ${name}!</h3>
-                        <p>We've received your message and will contact you at ${email} shortly.</p>
-                    </div>
-                </div>
-            `;
-            contactForm.appendChild(successMessage);
-            
-            // Reset form
-            contactForm.reset();
-            
-            // Remove message after 5 seconds
-            setTimeout(() => {
-                successMessage.remove();
-            }, 5000);
+        // Project Modals
+        const viewProjectBtns = document.querySelectorAll('.view-project');
+        const modal = document.getElementById('project-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const modalDesc = document.getElementById('modal-desc');
+        const modalImg = document.getElementById('modal-img');
+        const modalClient = document.getElementById('modal-client');
+        const modalTimeline = document.getElementById('modal-timeline');
+        const modalType = document.getElementById('modal-type');
+        const modalStatus = document.getElementById('modal-status');
+        const techList = document.getElementById('tech-list');
+        const liveDemoBtn = document.getElementById('live-demo');
+
+        // Project data
+        const projects = {
+            1: {
+                title: "Finance Tracker App",
+                category: "Mobile App",
+                desc: "A comprehensive finance tracking application for iOS and Android that helps users manage their expenses, investments, and savings goals. The app features real-time stock updates, budget planning tools, and personalized financial insights.",
+                img: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "FinTech Solutions Inc.",
+                timeline: "4 months",
+                type: "Cross-platform Mobile App",
+                status: "Completed",
+                technologies: ["React Native", "Redux", "Firebase", "Node.js", "Chart.js"],
+                demo: "#"
+            },
+            2: {
+                title: "Fashion E-Commerce Platform",
+                category: "Web App",
+                desc: "A complete e-commerce solution for a fashion retailer with advanced filtering, cart functionality, and secure payment integration. The platform features personalized recommendations, wishlists, and a seamless checkout experience.",
+                img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "StyleHub Fashion",
+                timeline: "5 months",
+                type: "Responsive Web Application",
+                status: "Completed",
+                technologies: ["React", "Node.js", "MongoDB", "Express", "Stripe"],
+                demo: "#"
+            },
+            3: {
+                title: "Fitness Challenge App",
+                category: "Mobile App",
+                desc: "A gamified fitness application with workout tracking, challenges, and social sharing capabilities. Users can join fitness challenges, track their progress, and compete with friends through an engaging interface.",
+                img: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "FitLife Enterprises",
+                timeline: "3 months",
+                type: "Cross-platform Mobile App",
+                status: "Completed",
+                technologies: ["Flutter", "Firebase", "Health API", "Google Fit", "Apple Health"],
+                demo: "#"
+            },
+            4: {
+                title: "Electronics Store",
+                category: "E-Commerce",
+                desc: "An online electronics marketplace with product comparisons, detailed specifications, user reviews, and secure checkout. The platform features an intuitive admin dashboard for inventory management and order processing.",
+                img: "https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "TechGadgets Inc.",
+                timeline: "6 months",
+                type: "E-Commerce Platform",
+                status: "Completed",
+                technologies: ["Vue.js", "Express", "Stripe", "MongoDB", "AWS"],
+                demo: "#"
+            },
+            5: {
+                title: "Banking App UI",
+                category: "UI/UX Design",
+                desc: "Modern banking interface design focused on usability, security, and seamless transaction flows. The design includes features like biometric authentication, expense categorization, and financial goal tracking.",
+                img: "https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "Global Bank Corporation",
+                timeline: "2 months",
+                type: "UI/UX Design",
+                status: "Completed",
+                technologies: ["Figma", "Adobe XD", "User Research", "Prototyping", "User Testing"],
+                demo: "#"
+            },
+            6: {
+                title: "Project Management Dashboard",
+                category: "Web App",
+                desc: "A comprehensive project management solution with task tracking, team collaboration, time tracking, and reporting features. The dashboard provides real-time insights into project progress and team performance.",
+                img: "https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                client: "Enterprise Solutions Ltd.",
+                timeline: "5 months",
+                type: "Web Application",
+                status: "Completed",
+                technologies: ["Angular", "NestJS", "PostgreSQL", "Redis", "Docker"],
+                demo: "#"
+            }
+        };
+
+        // Open modal with project details
+        viewProjectBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const projectId = btn.dataset.id;
+                const project = projects[projectId];
+                
+                if (project) {
+                    modalTitle.textContent = project.title;
+                    modalCategory.textContent = project.category;
+                    modalDesc.textContent = project.desc;
+                    modalImg.src = project.img;
+                    modalClient.textContent = project.client;
+                    modalTimeline.textContent = project.timeline;
+                    modalType.textContent = project.type;
+                    modalStatus.textContent = project.status;
+                    liveDemoBtn.href = project.demo;
+                    
+                    // Update technologies
+                    techList.innerHTML = '';
+                    project.technologies.forEach(tech => {
+                        const techItem = document.createElement('div');
+                        techItem.className = 'tech-item';
+                        techItem.textContent = tech;
+                        techList.appendChild(techItem);
+                    });
+                    
+                    // Show modal
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
         });
 
-        // Smooth Scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Close modal
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
         });
 
         // Sticky header shadow
@@ -1197,18 +2316,64 @@
             }
         });
 
-        // Floating shapes animation
-        document.addEventListener('mousemove', (e) => {
-            const shapes = document.querySelectorAll('.shape');
-            const x = e.clientX / window.innerWidth;
-            const y = e.clientY / window.innerHeight;
-            
-            shapes.forEach((shape, index) => {
-                const moveX = (x - 0.5) * 20 * (index + 1);
-                const moveY = (y - 0.5) * 20 * (index + 1);
-                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const contactFormPage = document.getElementById('contactFormPage');
+        
+        function handleFormSubmit(form) {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form values
+                const name = form.querySelector('input[name="name"]').value;
+                const email = form.querySelector('input[name="email"]').value;
+                const subject = form.querySelector('input[name="subject"]').value || 'New message from Code Stacks website';
+                const message = form.querySelector('textarea[name="message"]').value;
+                
+                // Create form data for email
+                const formData = {
+                    name,
+                    email,
+                    subject,
+                    message
+                };
+                
+                // Send form data to your email
+                sendEmail(formData);
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.innerHTML = `
+                    <div style="background: rgba(6, 182, 212, 0.2); border: 1px solid #06b6d4; padding: 1rem; border-radius: 10px; margin-top: 1rem; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-check-circle" style="color: #06b6d4; font-size: 1.5rem;"></i>
+                        <div>
+                            <h3 style="color: white; margin-bottom: 0.25rem;">Thank you, ${name}!</h3>
+                            <p>We've received your message and will contact you shortly.</p>
+                        </div>
+                    </div>
+                `;
+                form.appendChild(successMessage);
+                
+                // Reset form
+                form.reset();
+                
+                // Remove message after 5 seconds
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 5000);
             });
-        });
+        }
+        
+        function sendEmail(formData) {
+            // This is a simulation - in a real application, you would send this to your server
+            console.log('Sending email with data:', formData);
+            // Here you would typically use an email service or server-side processing
+            // For demo purposes, we'll just log the data
+        }
+        
+        // Initialize form handlers
+        handleFormSubmit(contactForm);
+        handleFormSubmit(contactFormPage);
     </script>
 </body>
 </html>
